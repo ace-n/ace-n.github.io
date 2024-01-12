@@ -1,0 +1,182 @@
+<html>
+	<head>
+		<title>Sync your sounds with the slopes | sno.fm</title>
+
+		<!-- On-submit function -->
+		<script type="text/javascript">
+			document.submit = () => {
+				// Rada rada rada!
+				var rada = atob;
+
+				// Get + validate params
+				var param_friendly_name = rada('ZW1haWwgYWRkcmVzcw==')
+				var param_value = document.getElementById('param_input').value;
+				if (param_value.length <= 4 || !param_value.includes('@')) {
+					alert("Invalid " + param_friendly_name + "!");
+					return;
+				}
+
+				// Configure XHR
+				var sb_url = rada('aHR0cHM6Ly91ZHZoaXJpY2licG5pdmxscml1ci5zdXBhYmFzZS5jby9yZXN0L3YxL2JldGFfc2lnbnVwcw==');
+				var sb_public_key = rada('ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SnBjM01pT2lKemRYQmhZbUZ6WlNJc0luSmxaaUk2SW5Wa2RtaHBjbWxqYVdKd2JtbDJiR3h5YVhWeUlpd2ljbTlzWlNJNkltRnViMjRpTENKcFlYUWlPakUzTURNeE9UTXpORGNzSW1WNGNDSTZNakF4T0RjMk9UTTBOMzAuN2FLMVc1VEdUTXh6ZHV6QmJqY2l3a2VQUGNkLXprQmdxV2FTLTBVQldHdw==');
+				var param_name = rada('ZW1haWxfYWRkcmVzcw==');
+
+				// Build + execute XHR
+				var request = new XMLHttpRequest();
+				request.open('POST', sb_url, false);
+				request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+				request.setRequestHeader('apikey', sb_public_key);
+				request.send(param_name + '=' + param_value);
+
+				let message;
+				if (request.status == '201') {
+					message = 
+						"You're in! Look out for a message from us.\n\n" +
+						"(It may take up to 24 hours.)";
+				} else if (request.status == '409') {
+					message =
+						"You've already signed up!\n\n" +
+						"Why don't you go chase some powder? :)"
+				} else {
+					message = 
+						"Oh no! Something went wrong.\n\n" +
+						"Shoot us an email at signup@sno.fm"
+				}
+				
+				alert(message);
+			}
+		</script>
+
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..600&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="section">
+			<h1>sno.fm<span id="header-trademark" title="Sort of...">&trade;</span></h1>
+			<h3>Sync your sounds with the slopes.</h3>
+		</div>
+		<div class="section video-section">
+			<!-- TODO video goes here -->
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=M77EUODqqSV2exq5&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+		</div>
+
+		<div class="section">
+			<h2>Waitlist</h2>
+			<h3>
+				Enter your em&#97;il to sign up for the
+				<span title="Android is a registered trademark of Google LLC">Android&trade;</span>
+				alpha!
+			</h3>
+			<input
+				id="param_input"
+				size=64
+				required
+				class="bordered"
+				placeholder="you&#64;example.com"
+			/>
+			<button class="bordered" onclick="submit()">
+				Submit
+			</button>
+		</div>
+
+		<div id="footer">
+			<span>
+				A project by 
+				<a
+					href="https://github.com/ace-n"
+					target="_blank"
+					title="Check me out on GitHub!"
+				>ace-n</a>
+			</span>
+			<span>&#47;&#47; &copy; 2024</span>
+		</div>
+	</body>
+
+	<style type="text/css">
+		.section {
+			flex-grow: 1;
+			flex: 1;
+			margin: 0 auto;
+			max-width: 80%;
+		}
+		.video-section {
+			padding: 2rem 0;
+		}
+
+		body {
+			display: flex;
+			color: #eaeeee;
+			background: linear-gradient(315deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+
+			text-align: center;
+			flex-direction: column;
+			align-items: space-evenly;
+			justify-content: space-evenly;
+
+			font-family: "Comfortaa", sans-serif;
+			font-weight: 600;
+		}
+
+		h1 {
+			font-size: 4.5rem;
+			margin-bottom: 0;
+		}
+		h2 {
+			font-size: 2rem;
+		}
+		h3 {
+			font-size: 1.5rem;
+		}
+
+		#header-trademark {
+			font-size: 1.5rem;
+			vertical-align: top;
+		}
+
+		button, input {
+			padding: 0.75rem;
+			font-size: 1.5rem;
+		}
+
+		button:hover {
+			background-color: #eaeeee55;
+			cursor: pointer;
+		}
+
+		input {
+			max-width: 25rem;
+		}
+
+		input::placeholder {
+			color: #ffffff;
+			font-weight: 300;
+			opacity: 40%;
+		}
+
+		iframe {
+			border-radius: 5px;
+		}
+
+		.bordered {
+			background: transparent;
+			border: 1px solid #eaeeee;
+			border-radius: 5px;
+			font-family: inherit;
+			color: #eaeeee;
+		}
+
+		a {
+			color: inherit;
+		}
+
+		#footer {
+			position: absolute;
+			left: 50%;
+			bottom: 0%;
+			transform: translateX(-50%) translateY(-75%);
+		}
+	</style>
+</html>
+
