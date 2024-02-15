@@ -61,6 +61,8 @@
 				}
 				document.carouselIndex = newCarouselIndex;
 			}
+
+			setInterval(document.advanceCarousel, 3000);
 		</script>
 
 		<!-- Fonts -->
@@ -74,10 +76,7 @@
 			<h1>sno.fm<span id="header-trademark" title="Sort of...">&trade;</span></h1>
 			<h2>Ride with the rhythm.</h2>
 		</div>
-		<div class="section carousel-section" onclick="document.advanceCarousel()">
-			<p class="carousel-header">
-				Tap the screenshot to learn more!
-			</p>
+		<div class="section carousel-section">
 			<div class="carousel-item">
 				<img src="screenshots/view_song.png" />
 				<p>Mix songs based on movements</p>
@@ -156,10 +155,7 @@
 			position: relative;
 			animation-duration: 0.5s;
 			animation-fill-mode: forwards;
-		}
-
-		.section.carousel-section .carousel-header {
-			font-size: 1.5rem;
+			animation-timing-function: ease;
 		}
 
 		.carousel-section img {
