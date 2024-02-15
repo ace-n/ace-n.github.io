@@ -52,7 +52,7 @@
 			document.carouselIndex = 0
 			document.advanceCarousel = () => {
 				var items = document.getElementsByClassName("carousel-item");
-				var newCarouselIndex = (document.carouselIndex + 1) % items.length;
+				var newCarouselIndex = (document.carouselIndex + 1) % 3;
 				var animationName = "carousel-section-shift-" + document.carouselIndex + "-" + newCarouselIndex;
 
 				console.log(animationName)
@@ -74,7 +74,7 @@
 	<body>
 		<div class="section">
 			<h1>sno.fm<span id="header-trademark" title="Sort of...">&trade;</span></h1>
-			<h2>Ride with the rhythm.</h2>
+			<h2>Ride with the rhythm</h2>
 		</div>
 		<div class="section carousel-section">
 			<div class="carousel-item">
@@ -89,6 +89,15 @@
 				<img src="screenshots/view_playlist.png" />
 				<p>Share mixes with friends!</p>
 			</div>
+
+			<!--
+				Duplicate of the first carousel item
+				(This enables smooth CSS scrolling animations.)
+			-->
+			<div class="carousel-item">
+				<img src="screenshots/view_song.png" />
+				<p>Mix songs based on movements</p>
+			</div
 		</div>
 
 		<div class="section">
@@ -153,7 +162,7 @@
 			height: 70vh;
 			display: inline-block;
 			position: relative;
-			animation-duration: 0.5s;
+			animation-duration: 1s;
 			animation-fill-mode: forwards;
 			animation-timing-function: ease;
 		}
@@ -178,7 +187,7 @@
 
 		@keyframes carousel-section-shift-2-0 {
 		  0%   {left: -140vw;}
-		  50%   {left: 0;}
+		  99%   {left: -210vw;}
 		  100%  {left: 0;}
 		}
 
